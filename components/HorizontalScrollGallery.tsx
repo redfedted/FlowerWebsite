@@ -1,10 +1,14 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import { FLOWERS } from '../constants';
 import type { Flower } from '../types';
 
-const FlowerCard: React.FC<{ flower: Flower }> = ({ flower }) => {
+interface HorizontalScrollGalleryProps {
+  onFlowerClick: (flower: Flower) => void;
+}
+
+const FlowerCard: React.FC<{ flower: Flower, onClick: () => void }> = ({ flower, onClick }) => {
   return (
-    <div className="flex flex-col items-center justify-start p-4 w-72 h-64 select-none">
+    <button onClick={onClick} className="flex flex-col items-center justify-start p-4 w-72 h-64 select-none transition-transform duration-300 ease-in-out hover:scale-105 group text-left">
       <div className="w-48 h-48 flex items-center justify-center">
         <img 
           src={flower.imageUrl} 
@@ -13,20 +17,23 @@ const FlowerCard: React.FC<{ flower: Flower }> = ({ flower }) => {
           draggable="false"
         />
       </div>
-      <p className="mt-4 font-lora-serif italic text-xl text-stone-800">{flower.name}</p>
-    </div>
+      <p className="mt-4 italic text-xl text-stone-800">{flower.name}</p>
+    </button>
   );
 };
 
-const ScrollableGridGallery: React.FC = () => {
+const ScrollableGridGallery: React.FC<HorizontalScrollGalleryProps> = ({ onFlowerClick }) => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const momentumID = useRef<number | null>(null);
   const isDown = useRef(false);
+  const didMove = useRef(false);
   
   const lastMouseX = useRef(0);
   const lastMouseY = useRef(0);
   const velX = useRef(0);
   const velY = useRef(0);
+
+  const galleryFlowers = useMemo(() => Array(5).fill(FLOWERS).flat(), []);
 
   const beginMomentumTracking = () => {
     cancelMomentumTracking();
@@ -46,13 +53,21 @@ const ScrollableGridGallery: React.FC = () => {
     
     el.scrollLeft += velX.current;
     el.scrollTop += velY.current;
-    velX.current *= 0.95; // Apply friction
+    velX.current *= 0.95;
     velY.current *= 0.95;
     
     if (Math.abs(velX.current) > 0.5 || Math.abs(velY.current) > 0.5) {
       momentumID.current = requestAnimationFrame(momentumLoop);
     } else {
       cancelMomentumTracking();
+    }
+  };
+  
+  const handleCardClick = (e: React.MouseEvent, flower: Flower) => {
+    if (didMove.current) {
+      e.preventDefault(); // Prevent click if the user was dragging
+    } else {
+      onFlowerClick(flower);
     }
   };
 
@@ -66,6 +81,10 @@ const ScrollableGridGallery: React.FC = () => {
       
       const dx = e.clientX - lastMouseX.current;
       const dy = e.clientY - lastMouseY.current;
+
+      if (Math.abs(dx) > 2 || Math.abs(dy) > 2) {
+        didMove.current = true;
+      }
 
       el.scrollLeft -= dx;
       el.scrollTop -= dy;
@@ -89,6 +108,7 @@ const ScrollableGridGallery: React.FC = () => {
 
     const onMouseDown = (e: MouseEvent) => {
       isDown.current = true;
+      didMove.current = false; // Reset move status on new mousedown
       el.classList.add('grabbing');
       lastMouseX.current = e.clientX;
       lastMouseY.current = e.clientY;
@@ -105,7 +125,7 @@ const ScrollableGridGallery: React.FC = () => {
       }
       e.preventDefault();
       cancelMomentumTracking();
-      velX.current += e.deltaY * 0.5;
+      velX.current += e.deltaY * 0.1;
       beginMomentumTracking();
     };
 
@@ -128,8 +148,10 @@ const ScrollableGridGallery: React.FC = () => {
       className="absolute inset-0 grid grid-flow-col auto-cols-max content-start gap-x-16 gap-y-8 pt-40 pb-40 px-8 overflow-auto cursor-grab no-scrollbar"
       style={{ gridTemplateRows: 'repeat(6, auto)' }}
     >
-      {FLOWERS.map(flower => (
-        <FlowerCard key={flower.id} flower={flower} />
+      {galleryFlowers.map((flower, index) => (
+        <div key={index} onMouseDown={() => didMove.current = false} onClick={(e) => handleCardClick(e, flower)}>
+          <FlowerCard flower={flower} onClick={() => { /* Clicks are handled by parent div */ }} />
+        </div>
       ))}
     </div>
   );

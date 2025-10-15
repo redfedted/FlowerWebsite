@@ -1,40 +1,100 @@
 import { Flower } from './types';
 
+const PLACEHOLDER_IMAGE_URL = 'https://i.imgur.com/K5bL0B2.png';
+
 export const FLOWERS: Flower[] = [
-  { id: 1, name: 'Lavender', imageUrl: 'https://i.imgur.com/4Yf2k0j.png' },
-  { id: 2, name: 'Daffodil', imageUrl: 'https://i.imgur.com/GzB3K0y.png' },
-  { id: 3, name: 'Tulip', imageUrl: 'https://i.imgur.com/cRTfH3s.png' },
-  { id: 4, name: 'Forget-Me-Not', imageUrl: 'https://i.imgur.com/Qk9Y3e3.png' },
-  { id: 5, name: 'Calendula', imageUrl: 'https://i.imgur.com/aWTyB7s.png' },
-  { id: 6, name: 'Rose', imageUrl: 'https://i.imgur.com/8i2d27p.png' },
-  { id: 7, name: 'Sunflower', imageUrl: 'https://i.imgur.com/M06eE5w.png' },
-  { id: 8, name: 'Daisy', imageUrl: 'https://i.imgur.com/2m4S0iY.png' },
-  { id: 9, name: 'Orchid', imageUrl: 'https://i.imgur.com/JqkL4tW.png' },
-  { id: 10, name: 'Lily', imageUrl: 'https://i.imgur.com/bB4S1aX.png' },
-  { id: 11, name: 'Peony', imageUrl: 'https://i.imgur.com/jQw5tY7.png' },
-  { id: 12, name: 'Marigold', imageUrl: 'https://i.imgur.com/rS2a8kI.png' },
-  { id: 13, name: 'Hibiscus', imageUrl: 'https://i.imgur.com/dXRBF5O.png' },
-  { id: 14, name: 'Zinnia', imageUrl: 'https://i.imgur.com/9wMf3bJ.png' },
-  { id: 15, name: 'Poppy', imageUrl: 'https://i.imgur.com/mXo3a3U.png' },
-  { id: 16, name: 'Carnation', imageUrl: 'https://i.imgur.com/eRY8jjt.png' },
-  { id: 17, name: 'Pansy', imageUrl: 'https://i.imgur.com/2sA9fSj.png' },
-  { id: 18, name: 'Iris', imageUrl: 'https://i.imgur.com/tVfF1d3.png' },
-  { id: 19, name: 'Chrysanthemum', imageUrl: 'https://i.imgur.com/fL8a2gD.png' },
-  { id: 20, name: 'Gerbera', imageUrl: 'https://i.imgur.com/r1h4zL7.png' },
-  { id: 21, name: 'Dahlia', imageUrl: 'https://i.imgur.com/bY3a5vJ.png' },
-  { id: 22, name: 'Snapdragon', imageUrl: 'https://i.imgur.com/E0d4o6J.png' },
-  { id: 23, name: 'Aster', imageUrl: 'https://i.imgur.com/T5v1eXf.png' },
-  { id: 24, name: 'Crocus', imageUrl: 'https://i.imgur.com/v8n0W7x.png' },
-  { id: 25, name: 'Bluebell', imageUrl: 'https://i.imgur.com/N7b0l9z.png' },
-  { id: 26, name: 'Amaryllis', imageUrl: 'https://i.imgur.com/5g5t1hK.png' },
-  { id: 27, name: 'Buttercup', imageUrl: 'https://i.imgur.com/c6u1n7J.png' },
-  { id: 28, name: 'Camellia', imageUrl: 'https://i.imgur.com/L4u3v2o.png' },
-  { id: 29, name: 'Cherry Blossom', imageUrl: 'https://i.imgur.com/8Q2Rz3s.png' },
-  { id: 30, name: 'Clove', imageUrl: 'https://i.imgur.com/o2y8r4t.png' },
-  { id: 31, name: 'Foxglove', imageUrl: 'https://i.imgur.com/s6n3g1H.png' },
-  { id: 32, name: 'Freesia', imageUrl: 'https://i.imgur.com/P7f0m8s.png' },
-  { id: 33, name: 'Gardenia', imageUrl: 'https://i.imgur.com/A6j4g5B.png' },
-  { id: 34, name: 'Heather', imageUrl: 'https://i.imgur.com/m4n3o2P.png' },
-  { id: 35, name: 'Hyacinth', imageUrl: 'https://i.imgur.com/t8g7h6J.png' },
-  { id: 36, name: 'Jasmine', imageUrl: 'https://i.imgur.com/U9o8f7K.png' },
+  { 
+    id: 1, 
+    name: 'Tulip', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'The tulip, a vibrant and elegant flower, has captivated hearts for centuries. Its journey from a wildflower in the mountains of Central Asia to a globally cherished ornamental plant is a tale of beauty, desire, and even economic frenzy. Today, tulips are synonymous with spring, renewal, and a rich cultural history.',
+    products: [
+      { id: 101, name: 'Beo', imageUrl: PLACEHOLDER_IMAGE_URL },
+      { id: 102, name: 'Diana', imageUrl: PLACEHOLDER_IMAGE_URL },
+    ]
+  },
+  { 
+    id: 2, 
+    name: 'Daffodil', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'The cheerful daffodil, with its trumpet-shaped corona, is one of the first signs of spring. Symbolizing rebirth and new beginnings, this hardy perennial brings a splash of sunshine to gardens and bouquets alike after a long winter.',
+    products: [] 
+  },
+  { 
+    id: 3, 
+    name: 'Calendula', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'Known as pot marigold, Calendula is celebrated for its bright, sunny petals and remarkable healing properties. Used for centuries in traditional medicine and skincare, its gentle, soothing nature makes it a staple in herbal remedies.',
+    products: [] 
+  },
+  { 
+    id: 4, 
+    name: 'Lavender', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'Famous for its calming fragrance and beautiful purple spikes, lavender is a beloved herb with a wide range of uses. From aromatherapy and essential oils to culinary arts, its serene presence promotes relaxation and tranquility.',
+    products: []
+  },
+  { 
+    id: 5, 
+    name: 'Daffodil', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'The cheerful daffodil, with its trumpet-shaped corona, is one of the first signs of spring. Symbolizing rebirth and new beginnings, this hardy perennial brings a splash of sunshine to gardens and bouquets alike after a long winter.',
+    products: [] 
+  },
+  { 
+    id: 6, 
+    name: 'Calendula', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'Known as pot marigold, Calendula is celebrated for its bright, sunny petals and remarkable healing properties. Used for centuries in traditional medicine and skincare, its gentle, soothing nature makes it a staple in herbal remedies.',
+    products: [] 
+  },
+  { 
+    id: 7, 
+    name: 'Lavender', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'Famous for its calming fragrance and beautiful purple spikes, lavender is a beloved herb with a wide range of uses. From aromatherapy and essential oils to culinary arts, its serene presence promotes relaxation and tranquility.',
+    products: []
+  },
+  { 
+    id: 8, 
+    name: 'Daffodil', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'The cheerful daffodil, with its trumpet-shaped corona, is one of the first signs of spring. Symbolizing rebirth and new beginnings, this hardy perennial brings a splash of sunshine to gardens and bouquets alike after a long winter.',
+    products: [] 
+  },
+  { 
+    id: 9, 
+    name: 'Calendula', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'Known as pot marigold, Calendula is celebrated for its bright, sunny petals and remarkable healing properties. Used for centuries in traditional medicine and skincare, its gentle, soothing nature makes it a staple in herbal remedies.',
+    products: [] 
+  },
+  { 
+    id: 10, 
+    name: 'Rose', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'The quintessential symbol of love and beauty, the rose is a timeless flower cherished for its delicate petals and enchanting fragrance. With thousands of varieties, it holds a special place in gardens, art, and ceremonies worldwide.',
+    products: [] 
+  },
+  { 
+    id: 11, 
+    name: 'Sunflower', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'True to its name, the sunflower follows the sun across the sky, its large, golden head a beacon of adoration and loyalty. A symbol of happiness and optimism, it provides both beauty and sustenance with its nutritious seeds.',
+    products: [] 
+  },
+  { 
+    id: 12, 
+    name: 'Daisy', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'With its classic white petals and sunny yellow center, the daisy embodies innocence, purity, and simple beauty. This cheerful wildflower is a favorite for its unpretentious charm and ability to brighten any field or garden.',
+    products: [] 
+  },
+  { 
+    id: 13, 
+    name: 'Orchid', 
+    imageUrl: PLACEHOLDER_IMAGE_URL,
+    description: 'Orchids are a symbol of exotic beauty, luxury, and strength. With their intricate, graceful forms and stunning array of colors, they are one of the most diverse and captivating families of flowering plants.',
+    products: [] 
+  },
 ];
